@@ -4,15 +4,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
+using WeatherStationApi.Services.Interfaces;
+
 namespace WeatherStationApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class WeatherStationController : ControllerBase
     {
-        public string Get()
+        private readonly IWeatherStationService _weatherStationService;
+
+        public WeatherStationController(IWeatherStationService weatherStationService)
         {
-            return "OK";
+            _weatherStationService = weatherStationService;
+        }
+
+        [HttpGet("{id}")]
+        public Task<string> Get(int id)
+        {
+            var result = _weatherStationService.GetFromClient(id);
+
+            return result;
         }
     }
 }
