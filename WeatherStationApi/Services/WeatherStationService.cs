@@ -17,11 +17,6 @@ namespace WeatherStationApi.Services
             this.weatherClient = weatherClient;
         }
 
-        public Task<string> HelloWorld()
-        {
-            return Task.FromResult<string>("Hello World Again");
-        }
-
         public Task<string> GetFromClient(int id)
         {
             return weatherClient.CalculateAverageTemperature(id);
