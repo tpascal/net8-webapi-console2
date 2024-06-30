@@ -10,6 +10,9 @@ namespace WeatherStationApi.Controllers
     [Route("api/[controller]")]
     public class WeatherStationController : ControllerBase
     {
-        
+        public string Get()
+        {
+            return "OK";
+        }
     }
 }
